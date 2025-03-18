@@ -1,16 +1,16 @@
 const express = require("express");
-const app = express();
+
 const jsonweb = require("jsonwebtoken");
 const mongoose = require('mongoose');
 
-const { userRouter } = require("./routes/user");
+const { userRouter } = require('./routes/user')
 const { courseRouter } = require("./routes/course");
 const { adminRouter } = require("./routes/admin");
 
-
+const app = express();
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://divyanshushekhar3742:85NG166x6copS5cI@cluster0.rjq2s.mongodb.net/Skillup")
+
 
 app.use("api/v1/user", userRouter);
 app.use("api/v1/course", courseRouter);
@@ -18,6 +18,12 @@ app.use("api/v1/admin", adminRouter) ;
 
 
 
+async function main(){
+    
+    console.log("connected")
+    app.listen(3000);
+    console.log("listening on port 3000")
+}
 
 
-app.listen(3000);
+main()
